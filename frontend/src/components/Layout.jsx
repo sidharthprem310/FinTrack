@@ -30,20 +30,20 @@ export default function Layout({ children }) {
                         FinTrack
                     </h1>
                 </div>
-                {user ? (
+                        {user ? (
                     <div className="relative" ref={containerRef}>
                         <button
                             aria-haspopup="true"
                             aria-expanded={showDropdown}
                             onKeyDown={handleKeyDown}
                             onClick={() => setShowDropdown((s) => !s)}
-                            className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/6 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-color/30"
+                            className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/6 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-color/30 whitespace-nowrap"
                         >
                             <div className="flex items-baseline gap-2">
                                 <span className="text-xs text-secondary opacity-70">Welcome,</span>
-                                <span className="text-sm font-semibold text-text-primary">{user.username}</span>
+                                <span className="text-sm font-semibold text-text-primary truncate">{user.username}</span>
                             </div>
-                            <div className="ml-2 w-9 h-9 rounded-full bg-gradient-to-br from-primary-color to-accent-color flex items-center justify-center text-white font-bold text-sm shadow-sm">
+                            <div className="ml-3 w-9 h-9 rounded-full bg-gradient-to-br from-primary-color to-accent-color flex items-center justify-center text-white font-bold text-sm shadow-sm flex-shrink-0">
                                 {user.username.charAt(0).toUpperCase()}
                             </div>
                             <svg
