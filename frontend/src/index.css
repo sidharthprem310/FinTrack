@@ -342,3 +342,48 @@ h2 {
 .user-dropdown:focus-within {
   box-shadow: 0 6px 30px rgba(2,6,23,0.35);
 }
+
+/* Header user button (no avatar for now) */
+.user-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 160ms ease, transform 120ms ease, box-shadow 160ms ease;
+}
+.user-btn:hover,
+.user-btn:focus {
+  background: rgba(255,255,255,0.04);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(2,6,23,0.35);
+  outline: none;
+}
+.user-btn .welcome {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: inline-block;
+}
+.user-btn .username {
+  font-weight: 600;
+  color: var(--text-primary);
+  max-width: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* Dropdown item separators */
+.user-dropdown .dropdown-item {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.user-dropdown .dropdown-item:last-child {
+  border-bottom: none;
+}
+
