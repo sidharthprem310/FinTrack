@@ -379,6 +379,17 @@ h2 {
   display: inline-block;
 }
 
+/* Ensure username shows original casing */
+.user-btn .username,
+.user-dropdown p,
+.user-dropdown .username {
+  text-transform: none !important;
+}
+
+.user-btn .welcome {
+  margin-right: 4px;
+}
+
 /* Dropdown item separators */
 .user-dropdown .dropdown-item {
   border-bottom: 1px solid rgba(255,255,255,0.04);
