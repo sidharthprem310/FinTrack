@@ -9,6 +9,7 @@ export const FinanceProvider = ({ children }) => {
     const [transactions, setTransactions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [user, setUser] = useState(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null);
 
     const fetchTransactions = async () => {
         try {
@@ -16,14 +17,20 @@ export const FinanceProvider = ({ children }) => {
             setTransactions(response.data);
             setLoading(false);
         } catch (err) {
-            setError('Failed to fetch transactions');
+            console.error(err);
+            // Don't show error if just authorized, or maybe handle differently
+            // setError('Failed to fetch transactions'); 
             setLoading(false);
         }
     };
 
     useEffect(() => {
-        fetchTransactions();
-    }, []);
+        if (user) {
+            fetchTransactions();
+        } else {
+            setLoading(false);
+        }
+    }, [user]);
 
     const addTransaction = async (transaction) => {
         try {
@@ -44,6 +51,33 @@ export const FinanceProvider = ({ children }) => {
         }
     };
 
+    const login = async (username, password) => {
+        try {
+            const response = await axios.post('/api/login/', { username, password });
+            const userData = response.data;
+            setUser(userData);
+            localStorage.setItem('user', JSON.stringify(userData));
+            return userData;
+        } catch (err) {
+            throw err;
+        }
+    };
+
+    const signup = async (username, email, password) => {
+        try {
+            await axios.post('/api/register/', { username, email, password });
+            return await login(username, password);
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    const logout = () => {
+        setUser(null);
+        setTransactions([]);
+        localStorage.removeItem('user');
+    };
+
     const getSummary = () => {
         const income = transactions
             .filter((t) => t.type === 'income')
@@ -61,6 +95,10 @@ export const FinanceProvider = ({ children }) => {
                 transactions,
                 loading,
                 error,
+                user,
+                login,
+                signup,
+                logout,
                 addTransaction,
                 deleteTransaction,
                 summary: getSummary(),
