@@ -41,13 +41,6 @@ export default function Welcome() {
                             <p className="text-slate-300 text-sm leading-relaxed">See a detailed breakdown of expenses by category with interactive charts.</p>
                         </div>
                     </div>
-                    <div className="flex gap-4">
-                        <div className="text-4xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-bold flex-shrink-0 leading-none">•</div>
-                        <div>
-                            <h3 className="font-semibold text-white mb-2 text-lg">Secure Access</h3>
-                            <p className="text-slate-300 text-sm leading-relaxed">Sign up or log in to keep your financial data safe and accessible anytime.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
 

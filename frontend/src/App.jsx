@@ -38,7 +38,7 @@ const AppRoutes = () => {
                 <Welcome />
               </main>
               <footer className="py-6 text-center text-slate-400 text-sm mt-8 border-t border-white/10">
-                Made with ❤️ by <a href="https://github.com/sidharthprem310" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-slate-100 transition-colors">Sidharth Prem</a>
+                Made with ❤️ by <a href="https://github.com/sidharthprem310" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-400 to-pink-500 bg-clip-text text-transparent font-semibold hover:from-pink-300 hover:to-pink-400 transition-all duration-200">Sidharth Prem</a>
               </footer>
             </div>
           </div>
