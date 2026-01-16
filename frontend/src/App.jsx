@@ -7,6 +7,7 @@ import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
 import ExpenseChart from './components/ExpenseChart';
 import Welcome from './components/Welcome';
+import Login from './components/Login';
 
 // Separate component to handle protected routes and accessing context
 const AppRoutes = () => {
@@ -63,7 +64,9 @@ const AppRoutes = () => {
               </>
             </Layout>
           ) : (
-            <Navigate to="/welcome" />
+            <Layout>
+              <Login />
+            </Layout>
           )
         }
       />

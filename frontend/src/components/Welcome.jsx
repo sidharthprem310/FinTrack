@@ -1,6 +1,12 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Welcome() {
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate('/fintrack');
+    };
+
     return (
         <div className="w-full max-w-4xl mx-auto px-4 py-8">
             {/* Main Heading */}
@@ -46,12 +52,13 @@ export default function Welcome() {
 
             {/* CTA Button */}
             <div className="flex justify-center pb-8">
-                <Link
-                    to="/fintrack"
-                    className="inline-flex items-center justify-center px-14 py-4 min-w-[240px] h-16 text-white font-bold text-xl rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 active:from-purple-700 active:to-pink-700 shadow-2xl hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 hover:scale-110 active:scale-95 uppercase tracking-wide"
+                <button
+                    onClick={handleNavigate}
+                    type="button"
+                    className="inline-flex items-center justify-center px-14 py-4 min-w-[240px] h-16 text-white font-bold text-xl rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 active:from-purple-700 active:to-pink-700 shadow-2xl hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 hover:scale-110 active:scale-95 uppercase tracking-wide cursor-pointer border-none"
                 >
                     Go to FinTrack
-                </Link>
+                </button>
             </div>
         </div>
     );
