@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useFinance } from '../context/FinanceContext';
 
 export default function Layout({ children }) {
@@ -94,7 +95,9 @@ export default function Layout({ children }) {
                         )}
                     </div>
                 ) : (
-                    <div className="text-secondary opacity-80">Welcome</div>
+                    <div className="text-secondary opacity-80">
+                        <Link to="/welcome" className="text-secondary hover:text-accent transition-colors">Welcome</Link>
+                    </div>
                 )}
             </header>
             <main className="flex-grow">{children}</main>
