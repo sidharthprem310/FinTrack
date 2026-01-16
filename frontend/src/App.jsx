@@ -5,8 +5,7 @@ import Dashboard from './components/Dashboard';
 import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
 import ExpenseChart from './components/ExpenseChart';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Welcome from './components/Welcome';
 
 // Separate component to handle protected routes and accessing context
 const AppRoutes = () => {
@@ -17,12 +16,11 @@ const AppRoutes = () => {
   }
 
   return (
-    <Layout>
+      <Layout>
       <Routes>
-        <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-        <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+        <Route path="/welcome" element={<Welcome />} />
         <Route
-          path="/"
+          path="/fintrack"
           element={
             user ? (
               <>
@@ -38,10 +36,11 @@ const AppRoutes = () => {
                 </div>
               </>
             ) : (
-              <Navigate to="/login" />
+              <Navigate to="/welcome" />
             )
           }
         />
+        <Route path="/" element={<Navigate to="/welcome" />} />
       </Routes>
     </Layout>
   );

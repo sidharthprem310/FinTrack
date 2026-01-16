@@ -98,8 +98,8 @@ export default function Signup() {
 
                     <div className="text-center text-sm text-secondary mt-4">
                         Already have an account?{' '}
-                        <Link to="/login" className="text-primary link-bold ml-1">
-                            Sign in here
+                        <Link to="/welcome" className="text-primary link-bold ml-1">
+                            Learn more / Sign in
                         </Link>
                     </div>
                 </form>
