@@ -48,7 +48,7 @@ export default function Welcome() {
             <div className="flex justify-center pb-8">
                 <Link
                     to="/fintrack"
-                    className="inline-flex items-center justify-center px-12 py-4 min-w-[220px] h-14 text-white font-bold text-lg rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 active:from-purple-700 active:to-pink-700 shadow-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
+                    className="inline-flex items-center justify-center px-14 py-4 min-w-[240px] h-16 text-white font-bold text-xl rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 active:from-purple-700 active:to-pink-700 shadow-2xl hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 hover:scale-110 active:scale-95 uppercase tracking-wide"
                 >
                     Go to FinTrack
                 </Link>
