@@ -17,13 +17,38 @@ const AppRoutes = () => {
   }
 
   return (
-      <Layout>
-      <Routes>
-        <Route path="/welcome" element={<Welcome />} />
-        <Route
-          path="/fintrack"
-          element={
-            user ? (
+    <Routes>
+      <Route
+        path="/welcome"
+        element={
+          <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex flex-col">
+            <div className="container flex flex-col min-h-screen pt-4">
+              <header className="flex justify-between items-center mb-12">
+                <div className="flex items-center gap-3">
+                  <img src="/logo.png" alt="FinTrack Logo" className="logo-sm" />
+                  <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-color to-accent-color">
+                    FinTrack
+                  </h1>
+                </div>
+                <div className="text-slate-300">
+                  <span>Ready to start?</span>
+                </div>
+              </header>
+              <main className="flex-grow flex items-center justify-center">
+                <Welcome />
+              </main>
+              <footer className="py-6 text-center text-slate-400 text-sm mt-8 border-t border-white/10">
+                Made with ❤️ by <a href="https://github.com/sidharthprem310" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-slate-100 transition-colors">Sidharth Prem</a>
+              </footer>
+            </div>
+          </div>
+        }
+      />
+      <Route
+        path="/fintrack"
+        element={
+          user ? (
+            <Layout>
               <>
                 <Dashboard />
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -36,14 +61,14 @@ const AppRoutes = () => {
                   </div>
                 </div>
               </>
-            ) : (
-              <Navigate to="/welcome" />
-            )
-          }
-        />
-        <Route path="/" element={<Navigate to="/welcome" />} />
-      </Routes>
-    </Layout>
+            </Layout>
+          ) : (
+            <Navigate to="/welcome" />
+          )
+        }
+      />
+      <Route path="/" element={<Navigate to="/welcome" />} />
+    </Routes>
   );
 };
 
