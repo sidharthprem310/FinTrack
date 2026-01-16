@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFinance } from '../context/FinanceContext';
+import { useFinance } from '../context/useFinance';
 
 export default function TransactionForm() {
     const { addTransaction } = useFinance();

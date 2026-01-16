@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFinance } from '../context/FinanceContext';
+import { useFinance } from '../context/useFinance';
 import { downloadCSV } from '../utils/csvHelper';
 
 export default function TransactionList() {
@@ -38,7 +38,7 @@ export default function TransactionList() {
     const filteredTransactions = getFilteredTransactions();
 
     const handleExport = () => {
-        // Prepare data for export
+        // Prepare data for export - exclude id and created_at from export
         const dataToExport = filteredTransactions.map(({ id, created_at, ...rest }) => rest);
         downloadCSV(dataToExport, `transactions_${filter}_${new Date().toISOString().split('T')[0]}.csv`);
     };

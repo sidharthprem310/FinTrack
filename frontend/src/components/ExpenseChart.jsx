@@ -1,4 +1,4 @@
-import { useFinance } from '../context/FinanceContext';
+import { useFinance } from '../context/useFinance';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
 const COLORS = ['#6366f1', '#ec4899', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];

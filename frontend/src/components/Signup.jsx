@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFinance } from '../context/FinanceContext';
+import { useFinance } from '../context/useFinance';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function Signup() {

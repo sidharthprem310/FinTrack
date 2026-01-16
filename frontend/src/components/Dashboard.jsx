@@ -1,4 +1,4 @@
-import { useFinance } from '../context/FinanceContext';
+import { useFinance } from '../context/useFinance';
 import { financeTips } from '../data/tips';
 import { useState, useEffect } from 'react';
 

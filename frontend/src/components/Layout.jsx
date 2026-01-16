@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useFinance } from '../context/FinanceContext';
+import { useFinance } from '../context/useFinance';
 
 export default function Layout({ children }) {
     const { user, logout } = useFinance();

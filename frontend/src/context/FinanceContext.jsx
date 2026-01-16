@@ -1,32 +1,28 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-const FinanceContext = createContext();
+export const FinanceContext = createContext();
 
-export const useFinance = () => useContext(FinanceContext);
-
-export const FinanceProvider = ({ children }) => {
+export function FinanceProvider({ children }) {
     const [transactions, setTransactions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [user, setUser] = useState(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null);
 
-    const fetchTransactions = async () => {
-        try {
-            const response = await axios.get('/api/transactions/');
-            setTransactions(response.data);
-            setLoading(false);
-        } catch (err) {
-            console.error(err);
-            // Don't show error if just authorized, or maybe handle differently
-            // setError('Failed to fetch transactions'); 
-            setLoading(false);
-        }
-    };
+
 
     useEffect(() => {
         if (user) {
-            fetchTransactions();
+            (async () => {
+                try {
+                    const response = await axios.get('/api/transactions/');
+                    setTransactions(response.data);
+                    setLoading(false);
+                } catch (err) {
+                    console.error(err);
+                    setLoading(false);
+                }
+            })();
         } else {
             setLoading(false);
         }
@@ -46,31 +42,23 @@ export const FinanceProvider = ({ children }) => {
         try {
             await axios.delete(`/api/transactions/${id}/`);
             setTransactions(transactions.filter((t) => t.id !== id));
-        } catch (err) {
+        } catch (error) {
             setError('Failed to delete transaction');
         }
     };
 
     const login = async (username, password) => {
-        try {
-            const response = await axios.post('/api/login/', { username, password });
-            const userData = response.data;
-            setUser(userData);
-            localStorage.setItem('user', JSON.stringify(userData));
-            return userData;
-        } catch (err) {
-            throw err;
-        }
+        const response = await axios.post('/api/login/', { username, password });
+        const userData = response.data;
+        setUser(userData);
+        localStorage.setItem('user', JSON.stringify(userData));
+        return userData;
     };
 
     const signup = async (username, email, password) => {
-        try {
-            await axios.post('/api/register/', { username, email, password });
-            return await login(username, password);
-        } catch (err) {
-            throw err;
-        }
-    }
+        await axios.post('/api/register/', { username, email, password });
+        return await login(username, password);
+    };
 
     const logout = () => {
         setUser(null);
@@ -107,4 +95,4 @@ export const FinanceProvider = ({ children }) => {
             {children}
         </FinanceContext.Provider>
     );
-};
+}
