@@ -91,14 +91,14 @@ export default function Signup() {
 
                     <button
                         type="submit"
-                        className="btn-submit"
+                        className="w-full px-6 py-4 text-white font-bold text-lg rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 active:from-purple-700 active:to-pink-700 shadow-lg hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 hover:scale-105 active:scale-95"
                     >
                         Create Account
                     </button>
 
                     <div className="text-center text-sm text-secondary mt-4">
                         Already have an account?{' '}
-                        <Link to="/welcome" className="text-primary link-bold ml-1">
+                        <Link to="/fintrack" className="text-primary link-bold ml-1">
                             Learn more / Sign in
                         </Link>
                     </div>
