@@ -83,7 +83,7 @@ export default function Login() {
                     <div className="text-center text-sm text-secondary mt-4">
                         Don't have an account?{' '}
                         <Link to="/signup" className="text-accent link-bold ml-1">
-                            Learn more / Get started
+                            Get started
                         </Link>
                     </div>
                 </form>
