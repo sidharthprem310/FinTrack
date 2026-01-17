@@ -4,7 +4,7 @@ export default function Welcome() {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        navigate('/fintrack');
+        navigate('/login');
     };
 
     return (

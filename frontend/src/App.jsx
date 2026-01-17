@@ -47,6 +47,14 @@ const AppRoutes = () => {
         }
       />
       <Route
+        path="/login"
+        element={
+          <Layout>
+            <Login />
+          </Layout>
+        }
+      />
+      <Route
         path="/signup"
         element={
           <Layout>
@@ -73,9 +81,7 @@ const AppRoutes = () => {
               </>
             </Layout>
           ) : (
-            <Layout>
-              <Login />
-            </Layout>
+            <Navigate to="/login" />
           )
         }
       />

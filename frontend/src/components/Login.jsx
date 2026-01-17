@@ -13,7 +13,7 @@ export default function Login() {
         e.preventDefault();
         try {
             await login(username, password);
-            navigate('/');
+            navigate('/fintrack');
         } catch (err) {
             if (err.response && err.response.data) {
                 // Handle Django DRF error format

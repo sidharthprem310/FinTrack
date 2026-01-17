@@ -14,7 +14,7 @@ export default function Signup() {
         e.preventDefault();
         try {
             await signup(username, email, password);
-            navigate('/');
+            navigate('/fintrack');
         } catch (err) {
             if (err.response && err.response.data) {
                 // Handling Django errors (e.g. {username: ["A user with that username already exists."]})
@@ -98,7 +98,7 @@ export default function Signup() {
 
                     <div className="text-center text-sm text-secondary mt-4">
                         Already have an account?{' '}
-                        <Link to="/fintrack" className="text-primary link-bold ml-1">
+                        <Link to="/login" className="text-primary link-bold ml-1">
                             Learn more / Sign in
                         </Link>
                     </div>
