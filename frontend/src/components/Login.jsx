@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFinance } from '../context/useFinance';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -6,18 +6,24 @@ export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { login } = useFinance();
+    const [isLoggingIn, setIsLoggingIn] = useState(false);
+    const { login, user } = useFinance();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user && isLoggingIn) {
+            setIsLoggingIn(false);
+            navigate('/fintrack');
+        }
+    }, [user, isLoggingIn, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            setIsLoggingIn(true);
             await login(username, password);
-            // Give the state update time to propagate before navigating
-            setTimeout(() => {
-                navigate('/fintrack');
-            }, 100);
         } catch (err) {
+            setIsLoggingIn(false);
             if (err.response && err.response.data) {
                 const errorData = err.response.data;
                 const errorMessage = errorData.error || errorData.detail || Object.values(errorData)[0] || 'Login failed';

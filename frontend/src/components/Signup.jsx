@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFinance } from '../context/useFinance';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -7,18 +7,24 @@ export default function Signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { signup } = useFinance();
+    const [isSigningUp, setIsSigningUp] = useState(false);
+    const { signup, user } = useFinance();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user && isSigningUp) {
+            setIsSigningUp(false);
+            navigate('/fintrack');
+        }
+    }, [user, isSigningUp, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            setIsSigningUp(true);
             await signup(username, email, password);
-            // Give the state update time to propagate before navigating
-            setTimeout(() => {
-                navigate('/fintrack');
-            }, 100);
         } catch (err) {
+            setIsSigningUp(false);
             if (err.response && err.response.data) {
                 const errorData = err.response.data;
                 const firstKey = Object.keys(errorData)[0];
