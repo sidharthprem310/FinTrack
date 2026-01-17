@@ -14,7 +14,10 @@ export default function Signup() {
         e.preventDefault();
         try {
             await signup(username, email, password);
-            navigate('/fintrack');
+            // Give the state update time to propagate before navigating
+            setTimeout(() => {
+                navigate('/fintrack');
+            }, 100);
         } catch (err) {
             if (err.response && err.response.data) {
                 const errorData = err.response.data;

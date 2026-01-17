@@ -13,7 +13,10 @@ export default function Login() {
         e.preventDefault();
         try {
             await login(username, password);
-            navigate('/fintrack');
+            // Give the state update time to propagate before navigating
+            setTimeout(() => {
+                navigate('/fintrack');
+            }, 100);
         } catch (err) {
             if (err.response && err.response.data) {
                 const errorData = err.response.data;
