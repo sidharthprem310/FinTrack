@@ -75,7 +75,13 @@ export default function Login() {
 
                     <button
                         type="submit"
-                        className="w-full px-6 py-4 text-white font-bold text-lg rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 active:from-purple-700 active:to-pink-700 shadow-lg hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 hover:scale-105 active:scale-95"
+                        style={{
+                            background: 'linear-gradient(to right, rgb(147, 51, 234), rgb(236, 72, 153))',
+                            cursor: 'pointer'
+                        }}
+                        className="w-full px-6 py-4 text-white font-bold text-lg rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:opacity-90 active:opacity-75"
+                        onMouseEnter={(e) => e.target.style.opacity = '0.9'}
+                        onMouseLeave={(e) => e.target.style.opacity = '1'}
                     >
                         Sign In
                     </button>

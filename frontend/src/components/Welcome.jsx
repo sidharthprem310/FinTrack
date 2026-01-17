@@ -55,9 +55,7 @@ export default function Welcome() {
                 <button
                     onClick={handleNavigate}
                     type="button"
-                    className="inline-flex items-center justify-center px-14 py-4 min-w-[240px] h-16 text-white font-bold text-xl rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 active:from-purple-700 active:to-pink-700 shadow-2xl hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 hover:scale-110 active:scale-95 uppercase tracking-wide cursor-pointer border-none"
-                >
-                    Go to FinTrack
+                    style={{\n                        background: 'linear-gradient(to right, rgb(147, 51, 234), rgb(236, 72, 153))',\n                        cursor: 'pointer'\n                    }}\n                    className=\"inline-flex items-center justify-center px-14 py-4 min-w-[240px] h-16 text-white font-bold text-xl rounded-2xl shadow-2xl transition-all duration-300 hover:shadow-2xl hover:opacity-90 active:opacity-75 uppercase tracking-wide border-none\"\n                    onMouseEnter={(e) => e.target.style.opacity = '0.9'}\n                    onMouseLeave={(e) => e.target.style.opacity = '1'}\n                >\n                    Go to FinTrack
                 </button>
             </div>
         </div>
