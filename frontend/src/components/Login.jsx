@@ -16,10 +16,8 @@ export default function Login() {
             navigate('/fintrack');
         } catch (err) {
             if (err.response && err.response.data) {
-                // Handle Django DRF error format
                 const errorData = err.response.data;
                 const errorMessage = errorData.error || errorData.detail || Object.values(errorData)[0] || 'Login failed';
-                // If it's an array (like ['This field is required']), join it
                 setError(Array.isArray(errorMessage) ? errorMessage.join(' ') : errorMessage);
             } else {
                 setError('Invalid username or password');
@@ -77,11 +75,25 @@ export default function Login() {
                         type="submit"
                         style={{
                             background: 'linear-gradient(to right, rgb(147, 51, 234), rgb(236, 72, 153))',
-                            cursor: 'pointer'
+                            cursor: 'pointer',
+                            width: '100%',
+                            padding: '1rem 1.5rem',
+                            color: 'white',
+                            fontWeight: 'bold',
+                            fontSize: '1.125rem',
+                            borderRadius: '12px',
+                            border: 'none',
+                            boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)',
+                            transition: 'all 300ms'
                         }}
-                        className="w-full px-6 py-4 text-white font-bold text-lg rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:opacity-90 active:opacity-75"
-                        onMouseEnter={(e) => e.target.style.opacity = '0.9'}
-                        onMouseLeave={(e) => e.target.style.opacity = '1'}
+                        onMouseEnter={(e) => {
+                            e.target.style.opacity = '0.9';
+                            e.target.style.boxShadow = '0 20px 35px -5px rgba(147, 51, 234, 0.5)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.target.style.opacity = '1';
+                            e.target.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.3)';
+                        }}
                     >
                         Sign In
                     </button>

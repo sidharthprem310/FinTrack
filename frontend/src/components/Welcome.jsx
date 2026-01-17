@@ -55,7 +55,35 @@ export default function Welcome() {
                 <button
                     onClick={handleNavigate}
                     type="button"
-                    style={{\n                        background: 'linear-gradient(to right, rgb(147, 51, 234), rgb(236, 72, 153))',\n                        cursor: 'pointer'\n                    }}\n                    className=\"inline-flex items-center justify-center px-14 py-4 min-w-[240px] h-16 text-white font-bold text-xl rounded-2xl shadow-2xl transition-all duration-300 hover:shadow-2xl hover:opacity-90 active:opacity-75 uppercase tracking-wide border-none\"\n                    onMouseEnter={(e) => e.target.style.opacity = '0.9'}\n                    onMouseLeave={(e) => e.target.style.opacity = '1'}\n                >\n                    Go to FinTrack
+                    style={{
+                        background: 'linear-gradient(to right, rgb(147, 51, 234), rgb(236, 72, 153))',
+                        cursor: 'pointer',
+                        padding: '1rem 3.5rem',
+                        minWidth: '240px',
+                        height: '64px',
+                        color: 'white',
+                        fontWeight: 'bold',
+                        fontSize: '1.25rem',
+                        borderRadius: '12px',
+                        border: 'none',
+                        boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)',
+                        transition: 'all 300ms',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                    onMouseEnter={(e) => {
+                        e.target.style.opacity = '0.9';
+                        e.target.style.boxShadow = '0 20px 35px -5px rgba(147, 51, 234, 0.5)';
+                    }}
+                    onMouseLeave={(e) => {
+                        e.target.style.opacity = '1';
+                        e.target.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.3)';
+                    }}
+                >
+                    Go to FinTrack
                 </button>
             </div>
         </div>
