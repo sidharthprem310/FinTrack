@@ -26,8 +26,19 @@ export default function Login() {
             setIsLoggingIn(false);
             if (err.response && err.response.data) {
                 const errorData = err.response.data;
-                const errorMessage = errorData.error || errorData.detail || Object.values(errorData)[0] || 'Login failed';
-                setError(Array.isArray(errorMessage) ? errorMessage.join(' ') : errorMessage);
+                let errorMessage = errorData.error || errorData.detail || Object.values(errorData)[0] || 'Login failed';
+                
+                // Handle array of error messages
+                if (Array.isArray(errorMessage)) {
+                    errorMessage = errorMessage[0];
+                }
+                
+                // Handle nested objects or convert to string
+                if (typeof errorMessage === 'object' && errorMessage !== null) {
+                    errorMessage = JSON.stringify(errorMessage);
+                }
+                
+                setError(errorMessage);
             } else {
                 setError('Invalid username or password');
             }

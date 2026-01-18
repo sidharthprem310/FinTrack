@@ -28,7 +28,18 @@ export default function Signup() {
             if (err.response && err.response.data) {
                 const errorData = err.response.data;
                 const firstKey = Object.keys(errorData)[0];
-                const message = Array.isArray(errorData[firstKey]) ? errorData[firstKey][0] : errorData[firstKey];
+                let message = errorData[firstKey];
+                
+                // Handle array of error messages
+                if (Array.isArray(message)) {
+                    message = message[0];
+                }
+                
+                // Handle nested objects or convert to string
+                if (typeof message === 'object' && message !== null) {
+                    message = JSON.stringify(message);
+                }
+                
                 setError(`${firstKey === 'non_field_errors' ? '' : firstKey + ': '}${message}`);
             } else {
                 setError('Registration failed. Username may be taken.');
