@@ -26,9 +26,9 @@ export default function Layout({ children }) {
         <div className="container flex flex-col min-h-screen">
             <header className="flex justify-between items-center mb-8 pt-4 relative">
                 <div className="flex items-center gap-3">
-                    <img src="/logo.png" alt="FinTrack Logo" className="logo-sm" />
+                    <img src="/logo.png" alt="Paynix Logo" className="logo-sm" />
                     <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-color to-accent-color">
-                        FinTrack
+                        Paynix
                     </h1>
                 </div>
                 {user ? (

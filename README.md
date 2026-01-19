@@ -1,6 +1,6 @@
-# FinTrack 🚀
+# Paynix 🚀
 
-**FinTrack** is a modern, intuitive Personal Finance Wrapper application designed to help you track income, expenses, and visualize spending habits effortlessly. Built with **React** and **Supabase** for a seamless and secure experience.
+**Paynix** is a modern, intuitive Personal Finance Wrapper application designed to help you track income, expenses, and visualize spending habits effortlessly. Built with **React** and **Supabase** for a seamless and secure experience.
 
 ## ✨ Features
 
@@ -29,8 +29,8 @@
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/sidharthprem310/FinTrack.git
-    cd FinTrack/frontend
+    git clone https://github.com/sidharthprem310/Paynix.git
+    cd Paynix/frontend
     ```
 
 2.  **Install dependencies**:

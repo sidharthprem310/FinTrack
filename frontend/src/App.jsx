@@ -23,15 +23,15 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route
-        path="/welcome"
+        path="/paynix"
         element={
           <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex flex-col">
             <div className="container flex flex-col min-h-screen pt-4">
               <header className="flex justify-between items-center mb-12">
                 <div className="flex items-center gap-3">
-                  <img src="/logo.png" alt="FinTrack Logo" className="logo-sm" />
+                  <img src="/logo.png" alt="Paynix Logo" className="logo-sm" />
                   <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-color to-accent-color">
-                    FinTrack
+                    Paynix
                   </h1>
                 </div>
                 <div className="text-slate-300">

@@ -26,7 +26,7 @@ export default function ChangePassword() {
 
         try {
             await updatePassword(password);
-            navigate('/fintrack');
+            navigate('/paynix');
         } catch (err) {
             setError(err.message || 'Failed to update password');
         } finally {

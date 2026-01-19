@@ -13,7 +13,7 @@ export default function Login() {
     useEffect(() => {
         if (user && isLoggingIn) {
             setIsLoggingIn(false);
-            navigate('/fintrack');
+            navigate('/paynix');
         }
     }, [user, isLoggingIn, navigate]);
 

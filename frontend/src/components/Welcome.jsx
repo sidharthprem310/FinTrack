@@ -13,7 +13,7 @@ export default function Welcome() {
             {/* Main Heading */}
             <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                 <h1 style={{ fontSize: '3rem', fontWeight: 'bold', color: 'white', marginBottom: '1rem', lineHeight: '1.2' }}>
-                    Welcome to FinTrack
+                    Welcome to Paynix
                 </h1>
                 <p style={{ fontSize: '1.25rem', color: '#dbeafe', maxWidth: '42rem', margin: '0 auto 1rem', fontWeight: '300' }}>
                     Your personal finance companion for smarter money management
@@ -117,7 +117,7 @@ export default function Welcome() {
                         e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(147, 51, 234, 0.3)';
                     }}
                 >
-                    Go to FinTrack
+                    Go to Paynix
                     <svg style={{ width: '1.25rem', height: '1.25rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>

@@ -16,7 +16,7 @@ export default function Signup() {
     // (Meaning they logged in normally, not just signed up waiting for verify)
     useEffect(() => {
         if (user && !showVerifyModal && !isSigningUp) {
-            navigate('/fintrack');
+            navigate('/paynix');
         }
     }, [user, isSigningUp, showVerifyModal, navigate]);
 
@@ -92,7 +92,7 @@ export default function Signup() {
 
             <div className="bg-card w-full max-w-sm p-8 rounded-2xl shadow-lg border border-white/5">
                 <h2 className="text-3xl font-bold text-center mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary-color to-accent-color">
-                    Welcome to FinTrack!
+                    Welcome to Paynix!
                 </h2>
                 <p className="text-center text-secondary mb-8">
                     Let's get your finances ordered.
