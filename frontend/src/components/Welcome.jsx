@@ -59,7 +59,7 @@ export default function Welcome() {
                     transition: 'transform 0.3s ease',
                     boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
                 }}>
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&q=80&w=600" alt="Manage List" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=600" alt="Manage List" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
                     <div style={{ padding: '1.5rem' }}>
                         <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'white', marginBottom: '0.75rem' }}>Manage Your List</h3>
                         <p style={{ color: '#cbd5e1', lineHeight: '1.6' }}>
