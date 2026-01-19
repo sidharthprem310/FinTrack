@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import { supabase } from '../supabaseClient';
 
 export const FinanceContext = createContext();
 
@@ -7,32 +7,61 @@ export function FinanceProvider({ children }) {
     const [transactions, setTransactions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [user, setUser] = useState(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null);
+    const [user, setUser] = useState(null);
 
+    useEffect(() => {
+        // Check active session
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setUser(session?.user ?? null);
+            setLoading(false);
+        });
 
+        // Listen for auth changes
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            setUser(session?.user ?? null);
+            setLoading(false);
+        });
+
+        return () => subscription.unsubscribe();
+    }, []);
 
     useEffect(() => {
         if (user) {
-            (async () => {
-                try {
-                    const response = await axios.get('/api/transactions/');
-                    setTransactions(response.data);
-                    setLoading(false);
-                } catch (err) {
-                    console.error(err);
-                    setLoading(false);
-                }
-            })();
+            fetchTransactions();
         } else {
-            setLoading(false);
+            setTransactions([]);
         }
     }, [user]);
 
+    const fetchTransactions = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('transactions')
+                .select('*')
+                .order('date', { ascending: false });
+
+            if (error) throw error;
+            setTransactions(data);
+        } catch (err) {
+            console.error('Error fetching transactions:', err);
+            setError(err.message);
+        }
+    };
+
     const addTransaction = async (transaction) => {
         try {
-            const response = await axios.post('/api/transactions/', transaction);
-            setTransactions([response.data, ...transactions]);
+            const { data, error } = await supabase
+                .from('transactions')
+                .insert([{
+                    ...transaction,
+                    user_id: user.id
+                }])
+                .select();
+
+            if (error) throw error;
+            setTransactions([data[0], ...transactions]);
         } catch (err) {
+            console.error('Error adding transaction:', err);
             setError('Failed to add transaction');
             throw err;
         }
@@ -40,30 +69,47 @@ export function FinanceProvider({ children }) {
 
     const deleteTransaction = async (id) => {
         try {
-            await axios.delete(`/api/transactions/${id}/`);
+            const { error } = await supabase
+                .from('transactions')
+                .delete()
+                .eq('id', id);
+
+            if (error) throw error;
             setTransactions(transactions.filter((t) => t.id !== id));
         } catch (error) {
+            console.error('Error deleting transaction:', error);
             setError('Failed to delete transaction');
         }
     };
 
-    const login = async (username, password) => {
-        const response = await axios.post('/api/login/', { username, password });
-        const userData = response.data;
-        setUser(userData);
-        localStorage.setItem('user', JSON.stringify(userData));
-        return userData;
+    const login = async (email, password) => {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        });
+        if (error) throw error;
+        return data.user;
     };
 
     const signup = async (username, email, password) => {
-        await axios.post('/api/register/', { username, email, password });
-        return await login(username, password);
+        // Supabase Auth uses email/password. Username is less standard but can be metadata.
+        // For simplicity, we'll just use email/password here.
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: { username }, // Store username in metadata
+            },
+        });
+        if (error) throw error;
+        return data.user;
     };
 
-    const logout = () => {
+    const logout = async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) throw error;
         setUser(null);
         setTransactions([]);
-        localStorage.removeItem('user');
     };
 
     const getSummary = () => {

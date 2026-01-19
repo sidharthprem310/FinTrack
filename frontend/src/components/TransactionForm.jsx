@@ -59,8 +59,15 @@ export default function TransactionForm() {
                     <label className="input-label">Category</label>
                     <select
                         className="form-control"
-                        value={formData.category}
-                        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                        value={['General', 'Food', 'Rent', 'Salary', 'Entertainment', 'Utilities', 'Health'].includes(formData.category) ? formData.category : 'Others'}
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            if (value === 'Others') {
+                                setFormData({ ...formData, category: '' });
+                            } else {
+                                setFormData({ ...formData, category: value });
+                            }
+                        }}
                     >
                         <option value="General">General</option>
                         <option value="Food">Food</option>
@@ -69,8 +76,22 @@ export default function TransactionForm() {
                         <option value="Entertainment">Entertainment</option>
                         <option value="Utilities">Utilities</option>
                         <option value="Health">Health</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
+                {(!['General', 'Food', 'Rent', 'Salary', 'Entertainment', 'Utilities', 'Health'].includes(formData.category) &&
+                    (formData.category === '' || !['General', 'Food', 'Rent', 'Salary', 'Entertainment', 'Utilities', 'Health'].includes(formData.category))) && (
+                        <div className="input-group mt-2">
+                            <input
+                                type="text"
+                                className="form-control"
+                                value={formData.category}
+                                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                                placeholder="Enter custom category"
+                                required
+                            />
+                        </div>
+                    )}
                 <div className="input-group">
                     <label className="input-label">Date</label>
                     <input

@@ -40,7 +40,7 @@ const AppRoutes = () => {
                 <Welcome />
               </main>
               <footer className="py-6 text-center text-slate-400 text-sm mt-8 border-t border-white/10">
-                Made with <span className="text-pink-500">❤️</span> by <a href="https://github.com/sidharthprem310" target="_blank" rel="noopener noreferrer" className="font-bold text-pink-500 hover:text-pink-400 transition-colors duration-200 underline underline-offset-2">Sidharth Prem</a>
+                Made with <span className="text-pink-500">❤️</span> by <a href="https://github.com/sidharthprem310" target="_blank" rel="noopener noreferrer" style={{ color: '#22d3ee' }} className="font-bold hover:text-cyan-300 transition-colors duration-200 underline underline-offset-2">Sidharth Prem</a>
               </footer>
             </div>
           </div>
@@ -86,7 +86,7 @@ const AppRoutes = () => {
         }
       />
       <Route path="/" element={<Navigate to="/welcome" />} />
-    </Routes>
+    </Routes >
   );
 };
 

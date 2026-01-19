@@ -8,82 +8,119 @@ export default function Welcome() {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto px-4 py-8">
+
+        <div style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '3rem 1.5rem', maxWidth: '1150px', margin: '0 auto' }}>
             {/* Main Heading */}
-            <div className="text-center mb-16">
-                <h1 className="text-6xl font-bold mb-8 text-white">
+            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                <h1 style={{ fontSize: '3rem', fontWeight: 'bold', color: 'white', marginBottom: '1rem', lineHeight: '1.2' }}>
                     Welcome to FinTrack
                 </h1>
-                <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-4 font-light">
+                <p style={{ fontSize: '1.25rem', color: '#dbeafe', maxWidth: '42rem', margin: '0 auto 1rem', fontWeight: '300' }}>
                     Your personal finance companion for smarter money management
                 </p>
-                <p className="text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                <p style={{ fontSize: '1.125rem', color: '#94a3b8', maxWidth: '48rem', margin: '0 auto', lineHeight: '1.6' }}>
                     Track income and expenses, visualize spending patterns, and gain insights into where your money goes with our intuitive finance dashboard.
                 </p>
             </div>
 
-            {/* Features Section */}
-            <div className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-12 mb-16">
-                <h2 className="text-2xl font-bold text-white mb-10">Here's how it works:</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="flex gap-4">
-                        <div className="text-4xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-bold flex-shrink-0 leading-none">•</div>
-                        <div>
-                            <h3 className="font-semibold text-white mb-2 text-lg">Add Transactions</h3>
-                            <p className="text-slate-300 text-sm leading-relaxed">Quickly log income and expense entries with category, amount, and date.</p>
-                        </div>
+            {/* Features Section - Explicit Grid */}
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                gap: '2rem',
+                marginBottom: '4rem'
+            }}>
+                {/* Card 1 */}
+                <div style={{
+                    backgroundColor: 'rgba(30, 41, 59, 0.6)',
+                    backdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '1rem',
+                    overflow: 'hidden',
+                    transition: 'transform 0.3s ease',
+                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                }}>
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600" alt="Add Transactions" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+                    <div style={{ padding: '1.5rem' }}>
+                        <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'white', marginBottom: '0.75rem' }}>Add Transactions</h3>
+                        <p style={{ color: '#cbd5e1', lineHeight: '1.6' }}>
+                            Quickly log income and expense entries with category, amount, and date.
+                        </p>
                     </div>
-                    <div className="flex gap-4">
-                        <div className="text-4xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-bold flex-shrink-0 leading-none">•</div>
-                        <div>
-                            <h3 className="font-semibold text-white mb-2 text-lg">Manage Your List</h3>
-                            <p className="text-slate-300 text-sm leading-relaxed">View all transactions in a searchable list, edit or remove items as needed.</p>
-                        </div>
+                </div>
+
+                {/* Card 2 */}
+                <div style={{
+                    backgroundColor: 'rgba(30, 41, 59, 0.6)',
+                    backdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '1rem',
+                    overflow: 'hidden',
+                    transition: 'transform 0.3s ease',
+                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                }}>
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&q=80&w=600" alt="Manage List" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+                    <div style={{ padding: '1.5rem' }}>
+                        <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'white', marginBottom: '0.75rem' }}>Manage Your List</h3>
+                        <p style={{ color: '#cbd5e1', lineHeight: '1.6' }}>
+                            View all transactions in a searchable list. Edit or remove items easily.
+                        </p>
                     </div>
-                    <div className="flex gap-4">
-                        <div className="text-4xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-bold flex-shrink-0 leading-none">•</div>
-                        <div>
-                            <h3 className="font-semibold text-white mb-2 text-lg">Visualize Spending</h3>
-                            <p className="text-slate-300 text-sm leading-relaxed">See a detailed breakdown of expenses by category with interactive charts.</p>
-                        </div>
+                </div>
+
+                {/* Card 3 */}
+                <div style={{
+                    backgroundColor: 'rgba(30, 41, 59, 0.6)',
+                    backdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '1rem',
+                    overflow: 'hidden',
+                    transition: 'transform 0.3s ease',
+                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                }}>
+                    <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=600" alt="Visualize Spending" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+                    <div style={{ padding: '1.5rem' }}>
+                        <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'white', marginBottom: '0.75rem' }}>Visualize Spending</h3>
+                        <p style={{ color: '#cbd5e1', lineHeight: '1.6' }}>
+                            See a detailed breakdown of expenses by category with interactive charts.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            {/* CTA Button */}
-            <div className="flex justify-center pb-8">
+            {/* CTA Button - Explicit Styles */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <button
                     onClick={handleNavigate}
                     type="button"
                     style={{
-                        background: 'linear-gradient(to right, rgb(147, 51, 234), rgb(236, 72, 153))',
-                        cursor: 'pointer',
-                        padding: '1rem 3.5rem',
-                        minWidth: '240px',
-                        height: '64px',
+                        background: 'linear-gradient(to right, #9333ea, #db2777)',
                         color: 'white',
+                        padding: '0.8rem 2.5rem',
+                        fontSize: '1.125rem',
                         fontWeight: 'bold',
-                        fontSize: '1.25rem',
-                        borderRadius: '12px',
+                        borderRadius: '9999px',
                         border: 'none',
-                        boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)',
-                        transition: 'all 300ms',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.05em',
+                        cursor: 'pointer',
+                        boxShadow: '0 10px 15px -3px rgba(147, 51, 234, 0.3)',
                         display: 'inline-flex',
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        gap: '0.75rem',
+                        transition: 'transform 0.2s, box-shadow 0.2s'
                     }}
                     onMouseEnter={(e) => {
-                        e.target.style.opacity = '0.9';
-                        e.target.style.boxShadow = '0 20px 35px -5px rgba(147, 51, 234, 0.5)';
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                        e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(147, 51, 234, 0.4)';
                     }}
                     onMouseLeave={(e) => {
-                        e.target.style.opacity = '1';
-                        e.target.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.3)';
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(147, 51, 234, 0.3)';
                     }}
                 >
                     Go to FinTrack
+                    <svg style={{ width: '1.25rem', height: '1.25rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
                 </button>
             </div>
         </div>

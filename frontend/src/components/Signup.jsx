@@ -18,31 +18,44 @@ export default function Signup() {
         }
     }, [user, isSigningUp, navigate]);
 
+    const validateForm = () => {
+        if (!username.trim()) {
+            setError('Username is required');
+            return false;
+        }
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$.%&*;]).{8,14}$/;
+        if (!passwordRegex.test(password)) {
+            setError('Password must be 8-14 characters with uppercase, lowercase, number, and symbol (!@#$.%&*;).');
+            return false;
+        }
+
+        return true;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+
+        if (!validateForm()) {
+            return;
+        }
+
         try {
             setIsSigningUp(true);
             await signup(username, email, password);
         } catch (err) {
             setIsSigningUp(false);
-            if (err.response && err.response.data) {
+            if (err.message) {
+                // Supabase auth errors usually come as err.message
+                setError(err.message);
+            } else if (err.response && err.response.data) {
+                // ... keep specific handling if needed, though Supabase is simpler
                 const errorData = err.response.data;
                 const firstKey = Object.keys(errorData)[0];
-                let message = errorData[firstKey];
-                
-                // Handle array of error messages
-                if (Array.isArray(message)) {
-                    message = message[0];
-                }
-                
-                // Handle nested objects or convert to string
-                if (typeof message === 'object' && message !== null) {
-                    message = JSON.stringify(message);
-                }
-                
-                setError(`${firstKey === 'non_field_errors' ? '' : firstKey + ': '}${message}`);
+                setError(`${firstKey}: ${JSON.stringify(errorData[firstKey])}`);
             } else {
-                setError('Registration failed. Username may be taken.');
+                setError('Registration failed. Please try again.');
             }
         }
     };

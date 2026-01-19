@@ -1,54 +1,68 @@
-# FinTrack
+# FinTrack 🚀
 
-A Personal Finance Tracker application built with Django (Backend) and React/Vite (Frontend).
+**FinTrack** is a modern, intuitive Personal Finance Wrapper application designed to help you track income, expenses, and visualize spending habits effortlessly. Built with **React** and **Supabase** for a seamless and secure experience.
 
-## Prerequisites
+## ✨ Features
 
-- Python 3.8+
-- Node.js 16+
-- npm
+-   **Dashboard & Visualization**: Get a clear overview of your financial health with interactive charts and summaries.
+-   **Transaction Management**: Easily add, edit, and delete income and expense transactions.
+-   **Smart Categories**: Organize transactions with built-in categories or add your own "Others".
+-   **Secure Authentication**: Robust signup and login powered by **Supabase Auth** with strict password policies.
+-   **Real-time Data**: Instant updates and data persistence in the cloud.
+-   **Responsive Design**: A beautiful, dark-themed UI that works on desktop and mobile.
 
-## Setup & Run
+## 🛠️ Tech Stack
 
-### Backend
+-   **Frontend**: React, Vite, Tailwind CSS (styled components)
+-   **Backend/Database**: Supabase (PostgreSQL, Auth, RLS)
+-   **Routing**: React Router
+-   **Icons**: Heroicons / Unsplash Images
 
-1. Navigate to the `backend` directory:
-   ```bash
-   cd backend
-   ```
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Run migrations:
-   ```bash
-   python manage.py migrate
-   ```
-4. Start the server:
-   ```bash
-   python manage.py runserver
-   ```
-   The backend API will be running at `http://127.0.0.1:8000/`.
+## 🚀 Getting Started
 
-### Frontend
+### Prerequisites
 
-1. Navigate to the `frontend` directory:
-   ```bash
-   cd frontend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-   The frontend application will be running at `http://localhost:5173/`.
+-   Node.js 16+
+-   npm or yarn
 
-## Features
+### Installation
 
-- Dashboard with financial overview
-- Transaction logging
-- Budget management
-- Visualizations
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/sidharthprem310/FinTrack.git
+    cd FinTrack/frontend
+    ```
+
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+3.  **Environment Setup**:
+    Create a `.env` file in the `frontend` directory with your Supabase credentials:
+    ```env
+    VITE_SUPABASE_URL=your_project_url
+    VITE_SUPABASE_ANON_KEY=your_anon_key
+    ```
+
+4.  **Run the Application**:
+    ```bash
+    npm run dev
+    ```
+    Open `http://localhost:5173` to view the app.
+
+## 🗄️ Database Schema
+
+The application uses a `transactions` table in Supabase.
+(See `supabase_schema.sql` for details).
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+Made with ❤️ by [Sidharth Prem](https://github.com/sidharthprem310)
