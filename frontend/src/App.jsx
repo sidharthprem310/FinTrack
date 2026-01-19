@@ -23,7 +23,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route
-        path="/paynix"
+        path="/welcome"
         element={
           <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex flex-col">
             <div className="container flex flex-col min-h-screen pt-4">
@@ -65,7 +65,7 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/fintrack"
+        path="/paynix"
         element={
           user ? (
             <Layout>
