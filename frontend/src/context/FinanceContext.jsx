@@ -124,8 +124,13 @@ export function FinanceProvider({ children }) {
     };
 
     const resetPassword = async (email) => {
+        // Use configured site URL (e.g., from Vercel) or fallback to current origin
+        const redirectTo = import.meta.env.VITE_SITE_URL
+            ? `${import.meta.env.VITE_SITE_URL}/change-password`
+            : `${window.location.origin}/change-password`;
+
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: `${window.location.origin}/change-password`,
+            redirectTo,
         });
         if (error) throw error;
     };
