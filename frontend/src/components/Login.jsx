@@ -3,7 +3,7 @@ import { useFinance } from '../context/useFinance';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function Login() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [isLoggingIn, setIsLoggingIn] = useState(false);
@@ -21,7 +21,7 @@ export default function Login() {
         e.preventDefault();
         try {
             setIsLoggingIn(true);
-            await login(username, password);
+            await login(email, password);
         } catch (err) {
             setIsLoggingIn(false);
             if (err.response && err.response.data) {
@@ -63,16 +63,16 @@ export default function Login() {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="mb-4">
-                        <label className="block text-sm font-medium text-secondary mb-2" htmlFor="username">
-                            Username
+                        <label className="block text-sm font-medium text-secondary mb-2" htmlFor="email">
+                            Email Address
                         </label>
                         <input
-                            type="text"
-                            id="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            type="email"
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             className="form-input"
-                            placeholder="Enter your username"
+                            placeholder="Enter your email"
                             required
                         />
                     </div>
