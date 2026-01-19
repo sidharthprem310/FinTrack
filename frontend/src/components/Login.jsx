@@ -27,17 +27,17 @@ export default function Login() {
             if (err.response && err.response.data) {
                 const errorData = err.response.data;
                 let errorMessage = errorData.error || errorData.detail || Object.values(errorData)[0] || 'Login failed';
-                
+
                 // Handle array of error messages
                 if (Array.isArray(errorMessage)) {
                     errorMessage = errorMessage[0];
                 }
-                
+
                 // Handle nested objects or convert to string
                 if (typeof errorMessage === 'object' && errorMessage !== null) {
                     errorMessage = JSON.stringify(errorMessage);
                 }
-                
+
                 setError(errorMessage);
             } else {
                 setError('Invalid username or password');
@@ -117,6 +117,12 @@ export default function Login() {
                     >
                         Sign In
                     </button>
+
+                    <div className="text-center mt-3">
+                        <Link to="/forgot-password" className="text-sm text-secondary hover:text-primary transition-colors">
+                            Forgot Password?
+                        </Link>
+                    </div>
 
                     <div className="text-center text-sm text-secondary mt-4">
                         Don't have an account?{' '}

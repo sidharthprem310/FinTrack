@@ -9,6 +9,8 @@ import ExpenseChart from './components/ExpenseChart';
 import Welcome from './components/Welcome';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import ForgotPassword from './components/ForgotPassword';
+import ChangePassword from './components/ChangePassword';
 
 // Separate component to handle protected routes and accessing context
 const AppRoutes = () => {
@@ -85,6 +87,8 @@ const AppRoutes = () => {
           )
         }
       />
+      <Route path="/forgot-password" element={<Layout><ForgotPassword /></Layout>} />
+      <Route path="/change-password" element={<Layout><ChangePassword /></Layout>} />
       <Route path="/" element={<Navigate to="/welcome" />} />
     </Routes >
   );

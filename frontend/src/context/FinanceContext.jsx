@@ -123,6 +123,20 @@ export function FinanceProvider({ children }) {
         return { income, expense, balance };
     };
 
+    const resetPassword = async (email) => {
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: `${window.location.origin}/change-password`,
+        });
+        if (error) throw error;
+    };
+
+    const updatePassword = async (newPassword) => {
+        const { error } = await supabase.auth.updateUser({
+            password: newPassword
+        });
+        if (error) throw error;
+    };
+
     return (
         <FinanceContext.Provider
             value={{
@@ -133,6 +147,8 @@ export function FinanceProvider({ children }) {
                 login,
                 signup,
                 logout,
+                resetPassword,
+                updatePassword,
                 addTransaction,
                 deleteTransaction,
                 summary: getSummary(),

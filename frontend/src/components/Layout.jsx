@@ -31,7 +31,7 @@ export default function Layout({ children }) {
                         FinTrack
                     </h1>
                 </div>
-                        {user ? (
+                {user ? (
                     <div className="relative" ref={containerRef}>
                         <button
                             aria-haspopup="true"
@@ -41,7 +41,7 @@ export default function Layout({ children }) {
                             className="user-btn whitespace-nowrap"
                         >
                             <span className="welcome">Welcome,</span>
-                            <span className="username">{user.username}</span>
+                            <span className="username">{user.user_metadata?.username || user.email}</span>
                             <svg
                                 className={`w-4 h-4 text-secondary ml-2 transition-transform duration-200 ${showDropdown ? 'rotate-180' : ''}`}
                                 viewBox="0 0 20 20"
@@ -57,10 +57,10 @@ export default function Layout({ children }) {
                                 <div className="p-4 bg-gradient-to-r from-primary-color/10 to-accent-color/10 border-b border-white/10">
                                     <div className="flex items-center gap-3">
                                         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-color to-accent-color flex items-center justify-center text-white font-bold text-sm shadow-sm">
-                                            {user.username.charAt(0).toUpperCase()}
+                                            {(user.user_metadata?.username || user.email).charAt(0).toUpperCase()}
                                         </div>
                                         <div>
-                                            <p className="text-sm font-bold text-text-primary">{user.username}</p>
+                                            <p className="text-sm font-bold text-text-primary">{user.user_metadata?.username || user.email}</p>
                                             {user.email && <p className="text-xs text-secondary/80 truncate">{user.email}</p>}
                                         </div>
                                     </div>
